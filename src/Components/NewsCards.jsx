@@ -1,7 +1,8 @@
 import React from "react";
 
-const NewsCards = ({ n }) => {
-  const { title, author, thumbnail_url, total_view, rating } = n;
+const NewsCards = ({ n,handler }) => {
+  console.log(n);
+  const { title, author, thumbnail_url, total_view, rating,id } = n;
 
   return (
     <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
@@ -37,6 +38,7 @@ const NewsCards = ({ n }) => {
       {/* Bottom: Info */}
       <div className="p-4 flex justify-between items-center text-sm text-gray-500">
         <span>👁 {total_view}</span>
+          <button onClick={()=>handler(id)} className="btn btn-primary">Read more</button>
         <span>⭐ {rating?.number}</span>
       </div>
 

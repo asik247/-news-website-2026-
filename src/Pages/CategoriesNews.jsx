@@ -3,6 +3,10 @@ import { useLoaderData, useParams } from 'react-router';
 import NewsCards from '../Components/NewsCards';
 
 const CategoriesNews = () => {
+    // handler code start hre;
+    const handler = (id)=>{
+        console.log('read more btn clicked',id);
+    }
     const { id } = useParams();
     // console.log(id);
     const allNews = useLoaderData();
@@ -27,7 +31,7 @@ const CategoriesNews = () => {
             <h2>All News here ({news.length})</h2>
             <div className='grid grid-cols-1 gap-5'>
                 {
-                    news.map(n => <NewsCards key={n.id} n={n}></NewsCards>)
+                    news.map(n => <NewsCards handler={handler} key={n.id} n={n}></NewsCards>)
                 }
             </div>
         </div>
