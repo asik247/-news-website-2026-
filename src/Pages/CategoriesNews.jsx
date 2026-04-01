@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router';
+import { useLoaderData, useNavigate, useParams } from 'react-router';
 import NewsCards from '../Components/NewsCards';
 
 const CategoriesNews = () => {
     // handler code start hre;
+    const navgate = useNavigate()
     const handler = (id)=>{
-        console.log('read more btn clicked',id);
+        // console.log('read more btn clicked',id);
+        navgate(`/details/${id}`);
     }
     const { id } = useParams();
     // console.log(id);
