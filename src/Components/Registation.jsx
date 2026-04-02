@@ -23,7 +23,6 @@ const Registation = () => {
                                 </fieldset>
                                 <div>
                                    Already have'n accoutn ? please <Link to={'/auth/login'}>login</Link>
-                                   Already have'n accoutn ? please <Link to={'/auth/login'}>login</Link>
                                 </div>
                             </form>
                         </div>
