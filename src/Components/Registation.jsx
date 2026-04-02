@@ -1,8 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
+import useMyHook from '../Hook/useMyHook';
+
 
 const Registation = () => {
+     const [nameValue,handleNameChange] = useMyHook('');
+
+    //  submite handler code here;
+    const handlerSubmit = (e)=>{
+        e.preventDefault();
+        console.log(nameValue);
+    }
+
     return (
+           
         <div>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col ">
@@ -12,10 +23,18 @@ const Registation = () => {
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <div className="card-body">
-                            <form>
+                            <form onSubmit={handlerSubmit}>
                                 <fieldset className="fieldset">
+                                    {/* Name inpul field */}
+                                     <label className="label">Name</label>
+                                    <input type="text" className="input" value={nameValue} onChange={handleNameChange} placeholder="Your Name" />
+                                    {/* Photo URL input field */}
+                                     <label className="label">Photo</label>
+                                    <input type="text" className="input" placeholder="PhotoURL" />
+                                    {/* Email input field */}
                                     <label className="label">Email</label>
                                     <input type="email" className="input" placeholder="Email" />
+                                    {/* Password input field */}
                                     <label className="label">Password</label>
                                     <input type="password" className="input" placeholder="Password" />
                                    
