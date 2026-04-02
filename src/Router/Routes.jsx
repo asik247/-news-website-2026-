@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         path: 'auth',
         Component: AuthLayout,
         children:[
-            {path:'auth/login',Component:Login},
-            {path:'auth/registation',Component:Registation}
+            {path:'login',Component:Login},
+            {path:'registation',Component:Registation}
         ]
     }
 ])
