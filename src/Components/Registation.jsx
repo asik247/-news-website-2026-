@@ -5,11 +5,14 @@ import useMyHook from '../Hook/useMyHook';
 
 const Registation = () => {
      const [nameValue,handleNameChange] = useMyHook('');
+     const [photoValue,handlePhotoChange] = useMyHook('');
+     const [emailValue,handleEmailChange] = useMyHook('');
+     const [passwordValue,handlePasswordChange] = useMyHook('');
 
     //  submite handler code here;
     const handlerSubmit = (e)=>{
         e.preventDefault();
-        console.log(nameValue);
+        console.log(nameValue,photoValue,emailValue,passwordValue);
     }
 
     return (
@@ -30,13 +33,13 @@ const Registation = () => {
                                     <input type="text" className="input" value={nameValue} onChange={handleNameChange} placeholder="Your Name" />
                                     {/* Photo URL input field */}
                                      <label className="label">Photo</label>
-                                    <input type="text" className="input" placeholder="PhotoURL" />
+                                    <input type="text" className="input" value={photoValue} onChange={handlePhotoChange} placeholder="PhotoURL" />
                                     {/* Email input field */}
                                     <label className="label">Email</label>
-                                    <input type="email" className="input" placeholder="Email" />
+                                    <input type="email" className="input" value={emailValue} onChange={handleEmailChange} placeholder="Email" />
                                     {/* Password input field */}
                                     <label className="label">Password</label>
-                                    <input type="password" className="input" placeholder="Password" />
+                                    <input type="password" className="input" value={passwordValue} onChange={handlePasswordChange} placeholder="Password" />
                                    
                                     <button className="btn btn-neutral mt-4">Registation</button>
                                 </fieldset>
