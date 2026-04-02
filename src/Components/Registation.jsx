@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router';
 import useMyHook from '../Hook/useMyHook';
+import { AuthContext } from '../Context/AuthContext';
 
 
 const Registation = () => {
+    const {registationUsers} = useContext(AuthContext);
+    // Cullected user enter value;
      const [nameValue,handleNameChange] = useMyHook('');
      const [photoValue,handlePhotoChange] = useMyHook('');
      const [emailValue,handleEmailChange] = useMyHook('');
@@ -13,6 +16,12 @@ const Registation = () => {
     const handlerSubmit = (e)=>{
         e.preventDefault();
         console.log(nameValue,photoValue,emailValue,passwordValue);
+        registationUsers(emailValue,passwordValue)
+        .then(res=>{
+            console.log(res.user);
+        }).catch(error=>{
+            console.log(error.message);
+        })
     }
 
     return (
