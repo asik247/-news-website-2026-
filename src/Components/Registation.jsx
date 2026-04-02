@@ -6,6 +6,7 @@ const Registation = () => {
             <h2>Registation</h2>
         </div>
     );
+        // ✅✅✅✅✅
 };
 
 export default Registation;
