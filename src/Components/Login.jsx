@@ -22,7 +22,7 @@ const Login = () => {
                                     <button className="btn btn-neutral mt-4">Login</button>
                                 </fieldset>
                                 <div>
-                                    New to our website ? please <Link to={'/auth/registation'}>Registation</Link>
+                                    New to our website ? please <Link className='text-blue-700 underline text-xl font-bold' to={'/auth/registation'}>Registation</Link>
                                 </div>
                             </form>
                         </div>

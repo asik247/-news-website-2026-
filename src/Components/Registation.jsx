@@ -22,7 +22,7 @@ const Registation = () => {
                                     <button className="btn btn-neutral mt-4">Registation</button>
                                 </fieldset>
                                 <div>
-                                   Already have'n accoutn ? please <Link to={'/auth/login'}>login</Link>
+                                   Already have'n accoutn ? please <Link className='text-blue-700 underline text-xl font-bold' to={'/auth/login'}>login</Link>
                                 </div>
                             </form>
                         </div>
