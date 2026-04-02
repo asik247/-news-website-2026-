@@ -1,10 +1,27 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
+import useMyHook from '../Hook/useMyHook';
 
 const Login = () => {
-    const userInfo = useContext(AuthContext);
-    console.log(userInfo);
+    const { logIn } = useContext(AuthContext);
+    // Cullected user enter value;
+   
+    const [emailValue, handleEmailChange] = useMyHook('');
+    const [passwordValue, handlePasswordChange] = useMyHook('');
+
+    //  submite handler code here;
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+        // console.log(nameValue, photoValue, emailValue, passwordValue);
+        logIn(emailValue, passwordValue)
+            .then(res => {
+                console.log(res.user);
+            }).catch(error => {
+                console.log(error.message);
+            })
+    }
+
     return (
         <div>
             <div className="hero min-h-screen">
@@ -15,12 +32,12 @@ const Login = () => {
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <div className="card-body">
-                            <form>
+                            <form onSubmit={handlerSubmit}>
                                 <fieldset className="fieldset">
                                     <label className="label">Email</label>
-                                    <input type="email" className="input" placeholder="Email" />
+                                    <input type="email" className="input" value={emailValue} onChange={handleEmailChange} placeholder="Email" />
                                     <label className="label">Password</label>
-                                    <input type="password" className="input" placeholder="Password" />
+                                    <input type="password" className="input" value={passwordValue} onChange={handlePasswordChange} placeholder="Password" />
                                     <div><a className="link link-hover">Forgot password?</a></div>
                                     <button className="btn btn-neutral mt-4">Login</button>
                                 </fieldset>
