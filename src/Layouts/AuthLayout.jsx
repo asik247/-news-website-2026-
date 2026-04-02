@@ -5,9 +5,13 @@ import Navbar from '../Components/Navbar';
 const AuthLayout = () => {
     return (
         <div>
-            <h2>AuthIntergration Layouts</h2>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
+            <nav className=' w-11/12 mx-auto'>
+                <Navbar></Navbar>
+
+            </nav>
+           <main className='w-11/12 mx-auto flex justify-center items-center mt-20'>
+             <Outlet></Outlet>
+           </main>
         </div>
 
     );

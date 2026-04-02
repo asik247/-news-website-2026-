@@ -15,7 +15,7 @@ const Navbar = () => {
                 <img src={userImages} alt="" />
                 <Link to={'/auth/login'} className='btn btn-primary'>LogIn</Link>
             </div>
-        // ✅✅✅✅✅
+     
 
         </div>
     );
