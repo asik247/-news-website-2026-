@@ -9,6 +9,7 @@ const Navbar = () => {
                 <NavLink to={'/'}>Home</NavLink>
                 <NavLink to={'/about'}>About</NavLink>
                 <NavLink to={'/career'}>Career</NavLink>
+               
             </div>
             <div className="login flex items-center gap-5">
                 <img src={userImages} alt="" />
