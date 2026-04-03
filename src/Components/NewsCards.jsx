@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 
 const NewsCards = ({ n, handler }) => {
   // console.log(n);
   const { title, author, thumbnail_url, total_view, rating, id } = n;
-  const { user } = useContext(AuthContext)
+  // const { user } = useContext(AuthContext)
   return (
     <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
 

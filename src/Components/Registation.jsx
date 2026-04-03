@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router';
 import useMyHook from '../Hook/useMyHook';
 import { AuthContext } from '../Context/AuthContext';
+import { updateProfile } from 'firebase/auth';
 
 
 const Registation = () => {
@@ -27,6 +28,12 @@ const Registation = () => {
             .then(res => {
                 console.log(res.user);
                 setSuccess(res.user);
+            const profile = {
+                displayName:nameValue,
+                photoURL:photoValue
+            }
+            updateProfile(res.user,profile)
+            // ✅✅✅✅✅
             }).catch(error => {
                 console.log(error.message);
                 setError(error.message);
