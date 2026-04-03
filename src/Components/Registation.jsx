@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import useMyHook from '../Hook/useMyHook';
 import { AuthContext } from '../Context/AuthContext';
 import { updateProfile } from 'firebase/auth';
@@ -16,6 +16,7 @@ const Registation = () => {
     // Error and Success message state code here;
     const [success, setSuccess] = useState('');
     const [error, setError] = useState(null);
+    const navgate = useNavigate()
 
     //  submite handler code here;
     const handlerSubmit = (e) => {
@@ -28,6 +29,7 @@ const Registation = () => {
             .then(res => {
                 console.log(res.user);
                 setSuccess(res.user);
+                navgate('/')
             const profile = {
                 displayName:nameValue,
                 photoURL:photoValue

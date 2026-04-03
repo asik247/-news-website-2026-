@@ -4,7 +4,7 @@ import { AuthContext } from '../Context/AuthContext';
 import useMyHook from '../Hook/useMyHook';
 
 const Login = () => {
-    const { logIn } = useContext(AuthContext);
+    const { logIn,user } = useContext(AuthContext);
     // Cullected user enter value;
     const location = useLocation()
     const navgate = useNavigate()
@@ -60,6 +60,12 @@ const Login = () => {
                                     {error && <p className='text-green-500 font-bold text-xl'>{error}</p>}
                                 </div>
                             </form>
+                            <div>
+                                {user&&<div>
+                                    <img src={user.photoURL} alt="" />
+                                    <h1>{user.displayName}</h1>
+                                    </div>}
+                            </div>
                         </div>
                     </div>
                 </div>

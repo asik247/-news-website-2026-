@@ -26,8 +26,12 @@ const Navbar = () => {
 
             </div>
             <div className="login flex items-center gap-5">
-                <img src={userImages} alt="" />
-                {user ?( <button onClick={handleLogOut} className='btn btn-primary'>LogOut</button>) : (<Link to={'/auth/login'} className='btn btn-primary'>LogIn</Link>)}
+                <img
+                    src={user?.photoURL || userImages}
+                    alt="user"
+                    className="w-10 h-10 rounded-full"
+                />
+                {user ? (<button onClick={handleLogOut} className='btn btn-primary'>LogOut</button>) : (<Link to={'/auth/login'} className='btn btn-primary'>LogIn</Link>)}
 
             </div>
 
