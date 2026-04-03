@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
-const NewsCards = ({ n,handler }) => {
+const NewsCards = ({ n, handler }) => {
   // console.log(n);
-  const { title, author, thumbnail_url, total_view, rating,id } = n;
-
+  const { title, author, thumbnail_url, total_view, rating, id } = n;
+  const { user, logOut } = useContext(AuthContext)
   return (
     <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
 
@@ -38,9 +39,25 @@ const NewsCards = ({ n,handler }) => {
       {/* Bottom: Info */}
       <div className="p-4 flex justify-between items-center text-sm text-gray-500">
         <span>👁 {total_view}</span>
-          <button onClick={()=>handler(id)} className="btn btn-primary">Read more</button>
+        <button
+          onClick={() => {
+            if (user) {
+              logOut()
+                .then(() => {
+                  console.log("Logged out");
+                })
+                .catch(err => console.log(err));
+            } else {
+              handler(id);
+            }
+          }}
+          className="btn btn-primary"
+        >
+          {user ? "Logout" : "Login"}
+        </button>
         <span>⭐ {rating?.number}</span>
       </div>
+      {/* LogOut added */}
 
     </div>
   );

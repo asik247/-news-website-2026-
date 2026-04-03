@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { auth } from '../Firebase/firebase.init';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 const AuthProvider = ({children}) => {
   const [user,setUser] = useState(null)
@@ -13,6 +13,10 @@ const AuthProvider = ({children}) => {
     const logIn = (email,password)=>{
         return signInWithEmailAndPassword(auth,email,password)
     }
+    // LogOut user code here;
+    const logOut = ()=>{
+      return signOut(auth)
+    }
     // onAuth state change added and current user set;
     useEffect(()=>{
       const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
@@ -23,7 +27,7 @@ const AuthProvider = ({children}) => {
     const userInfo = {
       registationUsers,
       logIn,
-      user
+      user,logOut
     }
     return (
       <AuthContext value={userInfo}>
