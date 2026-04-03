@@ -6,7 +6,7 @@ import { AuthContext } from '../Context/AuthContext';
 
 const Registation = () => {
     const { registationUsers,user } = useContext(AuthContext);
-    console.log('current user',user);
+    // console.log('current user',user);
     // Cullected user enter value;
     const [nameValue, handleNameChange] = useMyHook('');
     const [photoValue, handlePhotoChange] = useMyHook('');

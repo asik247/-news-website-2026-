@@ -36,7 +36,7 @@ const NewsCards = ({ n, handler }) => {
         className="w-full h-48 object-cover"
       />
 
-      {/* Bottom: Info */}
+      {/* Bottom: Info ✅✅✅✅*/}
       <div className="p-4 flex justify-between items-center text-sm text-gray-500">
         <span>👁 {total_view}</span>
         <button

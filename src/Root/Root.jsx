@@ -18,7 +18,7 @@ const Root = () => {
           <nav>
                 <Navbar></Navbar>
           </nav>
-          {/* ✅✅✅✅ */}
+          
           <main className='w-11/12 mx-auto grid grid-cols-12 mt-10 gap-5'>
             <aside className='col-span-3 sticky top-0 h-fit'>
                 <LeftAsid></LeftAsid>
