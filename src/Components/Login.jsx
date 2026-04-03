@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import useMyHook from '../Hook/useMyHook';
 
 const Login = () => {
     const { logIn } = useContext(AuthContext);
     // Cullected user enter value;
-
+    const location = useLocation()
+    const navgate = useNavigate()
+    console.log(location);
     const [emailValue, handleEmailChange] = useMyHook('');
     const [passwordValue, handlePasswordChange] = useMyHook('');
     // Error and Success message state code here;
@@ -23,6 +25,7 @@ const Login = () => {
             .then(res => {
                 console.log(res.user);
                 setSuccess(res.user)
+                navgate(location.state ||'/')
             }).catch(error => {
                 console.log(error.message);
                 setError(error.message)

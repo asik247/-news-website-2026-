@@ -4,7 +4,7 @@ import { AuthContext } from "../Context/AuthContext";
 const NewsCards = ({ n, handler }) => {
   // console.log(n);
   const { title, author, thumbnail_url, total_view, rating, id } = n;
-  const { user, logOut } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   return (
     <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
 
@@ -39,22 +39,15 @@ const NewsCards = ({ n, handler }) => {
       {/* Bottom: Info ✅✅✅✅*/}
       <div className="p-4 flex justify-between items-center text-sm text-gray-500">
         <span>👁 {total_view}</span>
+
         <button
-          onClick={() => {
-            if (user) {
-              logOut()
-                .then(() => {
-                  console.log("Logged out");
-                })
-                .catch(err => console.log(err));
-            } else {
-              handler(id);
-            }
-          }}
+      
+        onClick={()=>handler(id)}
           className="btn btn-primary"
         >
-          {user ? "Logout" : "Login"}
+        Read More
         </button>
+
         <span>⭐ {rating?.number}</span>
       </div>
       {/* LogOut added */}
@@ -64,3 +57,5 @@ const NewsCards = ({ n, handler }) => {
 };
 
 export default NewsCards;
+
+/**  {user?onClick={handler.id}:''} */
