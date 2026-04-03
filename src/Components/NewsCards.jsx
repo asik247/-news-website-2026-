@@ -1,7 +1,7 @@
 import React from "react";
 
 const NewsCards = ({ n,handler }) => {
-  console.log(n);
+  // console.log(n);
   const { title, author, thumbnail_url, total_view, rating,id } = n;
 
   return (

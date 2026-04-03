@@ -6,6 +6,7 @@ import Details from "../Components/Details";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Components/Login";
 import Registation from "../Components/Registation";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
             {
                 path: 'details/:id',
                 loader: ({ params }) => fetch("/news.json").then(res => res.json()).then(data => data.find(n => n.id == params.id)),
-                Component: Details
+                element:<PrivateRoute><Details></Details></PrivateRoute>
                 // ✅✅✅✅ private route added.
             },
 
