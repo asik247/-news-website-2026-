@@ -12,6 +12,7 @@ const AuthProvider = ({children}) => {
     const logIn = (email,password)=>{
         return signInWithEmailAndPassword(auth,email,password)
     }
+    // onAuth state change added and current user set;
     const userInfo = {
       registationUsers,
       logIn

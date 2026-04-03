@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import useMyHook from '../Hook/useMyHook';
@@ -6,19 +6,26 @@ import useMyHook from '../Hook/useMyHook';
 const Login = () => {
     const { logIn } = useContext(AuthContext);
     // Cullected user enter value;
-   
+
     const [emailValue, handleEmailChange] = useMyHook('');
     const [passwordValue, handlePasswordChange] = useMyHook('');
-
+    // Error and Success message state code here;
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState(null);
     //  submite handler code here;
     const handlerSubmit = (e) => {
         e.preventDefault();
+        // Reset code here;
+        setSuccess('');
+        setError(null);
         // console.log(nameValue, photoValue, emailValue, passwordValue);
         logIn(emailValue, passwordValue)
             .then(res => {
                 console.log(res.user);
+                setSuccess(res.user)
             }).catch(error => {
                 console.log(error.message);
+                setError(error.message)
             })
     }
 
@@ -43,6 +50,11 @@ const Login = () => {
                                 </fieldset>
                                 <div>
                                     New to our website ? please <Link className='text-blue-700 underline text-xl font-bold' to={'/auth/registation'}>Registation</Link>
+                                </div>
+                                {/* Error and Success messagae showing code here */}
+                                <div>
+                                    {success && <p className='text-green-500 font-bold text-xl'>Successfully account create!</p>}
+                                    {error && <p className='text-green-500 font-bold text-xl'>{error}</p>}
                                 </div>
                             </form>
                         </div>

@@ -1,31 +1,39 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router';
 import useMyHook from '../Hook/useMyHook';
 import { AuthContext } from '../Context/AuthContext';
 
 
 const Registation = () => {
-    const {registationUsers} = useContext(AuthContext);
+    const { registationUsers } = useContext(AuthContext);
     // Cullected user enter value;
-     const [nameValue,handleNameChange] = useMyHook('');
-     const [photoValue,handlePhotoChange] = useMyHook('');
-     const [emailValue,handleEmailChange] = useMyHook('');
-     const [passwordValue,handlePasswordChange] = useMyHook('');
+    const [nameValue, handleNameChange] = useMyHook('');
+    const [photoValue, handlePhotoChange] = useMyHook('');
+    const [emailValue, handleEmailChange] = useMyHook('');
+    const [passwordValue, handlePasswordChange] = useMyHook('');
+    // Error and Success message state code here;
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState(null);
 
     //  submite handler code here;
-    const handlerSubmit = (e)=>{
+    const handlerSubmit = (e) => {
         e.preventDefault();
-        console.log(nameValue,photoValue,emailValue,passwordValue);
-        registationUsers(emailValue,passwordValue)
-        .then(res=>{
-            console.log(res.user);
-        }).catch(error=>{
-            console.log(error.message);
-        })
+        // Reset code here;
+        setSuccess('');
+        setError(null);
+        // console.log(nameValue,photoValue,emailValue,passwordValue);
+        registationUsers(emailValue, passwordValue)
+            .then(res => {
+                console.log(res.user);
+                setSuccess(res.user);
+            }).catch(error => {
+                console.log(error.message);
+                setError(error.message);
+            })
     }
 
     return (
-           
+
         <div>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col ">
@@ -38,10 +46,10 @@ const Registation = () => {
                             <form onSubmit={handlerSubmit}>
                                 <fieldset className="fieldset">
                                     {/* Name inpul field */}
-                                     <label className="label">Name</label>
+                                    <label className="label">Name</label>
                                     <input type="text" className="input" value={nameValue} onChange={handleNameChange} placeholder="Your Name" />
                                     {/* Photo URL input field */}
-                                     <label className="label">Photo</label>
+                                    <label className="label">Photo</label>
                                     <input type="text" className="input" value={photoValue} onChange={handlePhotoChange} placeholder="PhotoURL" />
                                     {/* Email input field */}
                                     <label className="label">Email</label>
@@ -49,11 +57,16 @@ const Registation = () => {
                                     {/* Password input field */}
                                     <label className="label">Password</label>
                                     <input type="password" className="input" value={passwordValue} onChange={handlePasswordChange} placeholder="Password" />
-                                   
+
                                     <button className="btn btn-neutral mt-4">Registation</button>
                                 </fieldset>
                                 <div>
-                                   Already have'n accoutn ? please <Link className='text-blue-700 underline text-xl font-bold' to={'/auth/login'}>login</Link>
+                                    Already have'n accoutn ? please <Link className='text-blue-700 underline text-xl font-bold' to={'/auth/login'}>login</Link>
+                                </div>
+                                {/* Error and Success messagae showing code here */}
+                                <div>
+                                    {success && <p className='text-green-500 font-bold text-xl'>Successfully account create!</p>}
+                                    {error && <p className='text-green-500 font-bold text-xl'>{error}</p>}
                                 </div>
                             </form>
                         </div>
@@ -62,7 +75,7 @@ const Registation = () => {
             </div>
         </div>
     );
-    
+
 };
 
 export default Registation;

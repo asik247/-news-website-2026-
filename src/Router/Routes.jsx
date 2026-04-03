@@ -20,6 +20,7 @@ const router = createBrowserRouter([
                 path: 'details/:id',
                 loader: ({ params }) => fetch("/news.json").then(res => res.json()).then(data => data.find(n => n.id == params.id)),
                 Component: Details
+                // ✅✅✅✅ private route added.
             },
 
         ]
