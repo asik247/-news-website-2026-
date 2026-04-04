@@ -3,10 +3,11 @@ import Header from '../Components/Header';
 import LatestNews from '../Components/LatestNews';
 import Navbar from '../Components/Navbar';
 import LeftAsid from '../Components/LeftAsid';
-import { Outlet } from 'react-router';
+import { Outlet, useNavigation } from 'react-router';
 import RightAsid from '../Components/RightAsid';
 
 const Root = () => {
+    const {state} = useNavigation()
     return (
         <div>
           <header>
@@ -24,7 +25,7 @@ const Root = () => {
                 <LeftAsid></LeftAsid>
             </aside>
             <section className='col-span-6'>
-                    <Outlet></Outlet>
+                   {state =='loading'?<span className="loading loading-bars loading-xl"></span>:<Outlet></Outlet>} 
             </section>
             <aside className='col-span-3 sticky top-0 h-fit'>
                 <RightAsid></RightAsid>

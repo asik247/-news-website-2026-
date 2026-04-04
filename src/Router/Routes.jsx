@@ -10,12 +10,16 @@ import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
-        path: '/', Component: Root, children: [
+        path: '/', Component: Root,
+
+        children: [
             { index: true, Component: Home },
             {
                 path: 'categoriesNews/:id',
                 loader: () => fetch("/news.json"),
-                Component: CategoriesNews
+                Component: CategoriesNews,
+                 hydrateFallbackElement:<span className="loading loading-bars loading-xl"></span>
+        
             },
             {
                 path: 'details/:id',
