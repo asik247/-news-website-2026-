@@ -1,10 +1,26 @@
 import React from 'react';
-import '../index.css'
+import '../index.css';
+
 const LatestNews = () => {
     return (
-        <div className='w-11/12 mx-auto mt-5 flex items-center gap-3'>
-            <h2 className='btn btn-primary'>LatestNews</h2>
-             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi iure unde omnis! Molestiae, dicta facere Lorem ipsum dolor sit amet consectetur adipisicing elit.?</p>
+        <div className="w-11/12 mx-auto mt-6">
+            
+            {/* Container */}
+            <div className="flex items-center gap-4 bg-base-200 p-3 rounded-xl shadow-sm overflow-hidden">
+                
+                {/* Label */}
+                <button className="bg-red-500 text-white px-4 py-2 rounded-lg font-semibold animate-pulse">
+                    Latest
+                </button>
+
+                {/* Scrolling News */}
+                <div className="overflow-hidden relative w-full">
+                    <p className="whitespace-nowrap animate-marquee text-gray-700 font-medium">
+                        🔥 Breaking News: Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus, velit.. Sequi iure unde omnis! Molestiae dicta facere...
+                    </p>
+                </div>
+            </div>
+
         </div>
     );
 };
