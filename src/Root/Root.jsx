@@ -8,6 +8,7 @@ import RightAsid from '../Components/RightAsid';
 
 const Root = () => {
     const {state} = useNavigation()
+    // ✅✅✅✅✅
     return (
         <div>
           <header>
@@ -25,6 +26,7 @@ const Root = () => {
                 <LeftAsid></LeftAsid>
             </aside>
             <section className='col-span-6'>
+                {/* ✅✅✅✅✅ */}
                    {state =='loading'?<span className="loading loading-bars loading-xl"></span>:<Outlet></Outlet>} 
             </section>
             <aside className='col-span-3 sticky top-0 h-fit'>
