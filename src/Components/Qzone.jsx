@@ -8,37 +8,21 @@ const Qzone = () => {
         <div className="mt-6 p-4 bg-base-200 rounded-2xl shadow-md">
 
             <h2 className="text-lg font-bold mb-4 border-b pb-2">
-                Qzone
+                🎯 Qzone
             </h2>
 
             <div className="flex flex-col gap-4">
 
-                {/* Image 1 */}
-                <div className="overflow-hidden rounded-xl">
-                    <img
-                        src={img1}
-                        alt="Class"
-                        className="w-full hover:scale-105 transition duration-300 cursor-pointer"
-                    />
-                </div>
-
-                {/* Image 2 */}
-                <div className="overflow-hidden rounded-xl">
-                    <img
-                        src={img2}
-                        alt="Playground"
-                        className="w-full hover:scale-105 transition duration-300 cursor-pointer"
-                    />
-                </div>
-
-                {/* Image 3 */}
-                <div className="overflow-hidden rounded-xl">
-                    <img
-                        src={img3}
-                        alt="Swimming"
-                        className="w-full hover:scale-105 transition duration-300 cursor-pointer"
-                    />
-                </div>
+                {[img1, img2, img3].map((img, i) => (
+                    <div key={i} className="relative overflow-hidden rounded-xl group cursor-pointer">
+                        <img
+                            src={img}
+                            alt=""
+                            className="w-full group-hover:scale-110 transition duration-300"
+                        />
+                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition"></div>
+                    </div>
+                ))}
 
             </div>
         </div>

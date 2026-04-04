@@ -1,10 +1,21 @@
-// import React, { useContext } from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 
 const NewsCards = ({ n, handler }) => {
-  // console.log(n);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const { title, author, thumbnail_url, total_view, rating, id } = n;
-  // const { user } = useContext(AuthContext)
+
+  const handleReadMore = () => {
+    if (user) {
+      handler(id); // logged in → previous handler (navigate to details)
+    } else {
+      navigate("/auth/login"); // not logged in → go to login page
+    }
+  };
+
   return (
     <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
 
@@ -14,48 +25,45 @@ const NewsCards = ({ n, handler }) => {
           <img
             src={author?.img}
             alt={author?.name}
-            className="w-10 h-10 rounded-full"
+            className="w-10 h-10 rounded-full object-cover"
           />
           <div>
-            <p className="text-sm font-semibold">{author?.name}</p>
+            <p className="text-sm font-semibold">{author?.name || "Unknown"}</p>
             <p className="text-xs text-gray-500">
-              {new Date(author?.published_date).toDateString()}
+              {author?.published_date
+                ? new Date(author.published_date).toDateString()
+                : "Date unknown"}
             </p>
           </div>
         </div>
 
-        <h2 className="text-lg font-bold line-clamp-2">
-          {title}
-        </h2>
+        <h2 className="text-lg font-bold line-clamp-2">{title}</h2>
       </div>
 
       {/* Middle: Image */}
       <img
         src={thumbnail_url}
         alt={title}
-        className="w-full h-48 object-cover"
+        className="w-full h-48 object-cover hover:scale-105 transition duration-300"
       />
 
-      {/* Bottom: Info ✅✅✅✅*/}
+      {/* Bottom: Info */}
       <div className="p-4 flex justify-between items-center text-sm text-gray-500">
-        <span>👁 {total_view}</span>
+
+        <span>👁 {total_view || 0}</span>
 
         <button
-      
-        onClick={()=>handler(id)}
+          onClick={handleReadMore}
           className="btn btn-primary"
         >
-        Read More
+          Read More
         </button>
 
-        <span>⭐ {rating?.number}</span>
+        <span>⭐ {rating?.number || 0}</span>
       </div>
-      {/* LogOut added */}
 
     </div>
   );
 };
 
 export default NewsCards;
-
-/**  {user?onClick={handler.id}:''} */
