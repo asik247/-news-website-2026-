@@ -8,7 +8,7 @@ const Login = () => {
     // Cullected user enter value;
     const location = useLocation()
     const navgate = useNavigate()
-    console.log(location);
+    // console.log(location);
     const [emailValue, handleEmailChange] = useMyHook('');
     const [passwordValue, handlePasswordChange] = useMyHook('');
     // Error and Success message state code here;
