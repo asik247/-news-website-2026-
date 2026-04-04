@@ -4,6 +4,9 @@ import userImages from "../assets/user.png"
 import { AuthContext } from '../Context/AuthContext';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    // hide firebser key;
+    // console.log(import.meta.env.VITE_name);
+    // console.log(import.meta.env.VITE_age);
     // console.log(user);
     const handleLogOut = () => {
         logOut()
